@@ -9,6 +9,20 @@
         "dist/browser/signalr.js",
         "dist/browser/signalr.min.js"
       ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Chart.js@2.7.2",
+      "destination": "wwwroot/lib/Chart.js/",
+      "files": [
+        "Chart.min.js",
+        "Chart.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "babel-standalone@6.26.0",
+      "destination": "wwwroot/lib/babel-standalone/"
     }
   ]
 }

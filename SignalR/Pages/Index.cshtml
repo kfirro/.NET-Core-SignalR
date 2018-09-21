@@ -3,7 +3,7 @@
     <div class="row">&nbsp;</div>
     <div class="row" style="float:left">
         <div class="col-6">
-            <input type="checkbox" id="cbLiveView" />&nbsp; Turn on live view 
+            <input type="checkbox" id="cbLiveView" />&nbsp; Turn on live view
         </div>
     </div>
     <div class="row" style="float:right">
@@ -24,6 +24,12 @@
             <ul id="messagesList"></ul>
         </div>
     </div>
+    <div class="row">
+        <div style="width:75%">
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
 </div>
-<script src="~/lib/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/hub.js"></script>
+@section scripts {
+    <script src="~/js/pages/indexPages.js" asp-append-version="true"></script>
+}
