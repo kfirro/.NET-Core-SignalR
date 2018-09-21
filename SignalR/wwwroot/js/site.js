@@ -42,26 +42,6 @@ var chart = new Chart(document.getElementById("chart"),
                 ]
             }
         }
-        //type: 'line',
-        //data: {
-        //    labels: labels,
-        //    datasets: datasets
-        //},
-        //options: {
-        //    responsive: false,
-        //    animation: {
-        //        duration: speed * 1.5,
-        //        easing: 'linear'
-        //    },
-        //    //legend: true,
-        //    scales: {
-        //        xAxes: [
-        //            {
-        //                display: true
-        //            }
-        //        ],
-        //    }
-        //}
     });
 
 function injectHtmlResult(encodedMsg, index) {
@@ -83,7 +63,7 @@ function cyclicPush(arr, maxLength, index, obj) {
 }
 function displayResults(actionName, errorCode, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = "Action: " + actionName + " Status Code: " + errorCode + " Message:" + msg;
+    var encodedMsg = "Action: " + actionName + ", Status Code: " + errorCode + ", Message:" + msg;
     index = cyclicPush(liveViewArr, maxLiveResults, index, encodedMsg);
     injectHtmlResult(encodedMsg, index);
     for (var i = 0; i < chartsIdArr.length; i++) {
