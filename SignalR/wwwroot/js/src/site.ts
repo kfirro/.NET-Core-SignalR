@@ -30,7 +30,7 @@ export module Utils{
         site.index = cyclicPush(site.liveViewArr, maxLiveResults, site.index, encodedMsg);
         injectHtmlResult(encodedMsg, site.index);
         for (var i = 0; i < site.chartsIdArr.length; i++) {
-            CreateOrUpdateDataSet(site.chart, actionName, errorCode);
+            CreateOrUpdateDataSet(site, actionName, errorCode);
         }
     }
     export function getRandomColor(): string {
@@ -78,7 +78,7 @@ export module Utils{
     }
 }
 
-class Site {
+export class Site {
     liveViewArr: Array<string> = [];
     index: number = 0;
     //General
@@ -90,10 +90,9 @@ class Site {
     barChartData: any = { datasets: [] };
     labels: Array<string> = [];
     chart: any;
-
     constructor() {
         this.createGraph();
-    } 
+    }
     private createGraph() {
         this.chart = new Chart(document.getElementById("chart"),
             {
@@ -129,10 +128,6 @@ class Site {
             });
     }
 }
-
-export let SiteInstance = new Site(); //Singletone
-
-
 
 
 

@@ -8,6 +8,7 @@ var isLive = false;
 var Utils;
 (function (Utils) {
     function injectHtmlResult(encodedMsg, index) {
+        console.log("injectHtmlResult");
         var li = document.createElement("li");
         li.textContent = encodedMsg;
         li.id = "messagesList_" + index;
@@ -27,12 +28,13 @@ var Utils;
     }
     Utils.cyclicPush = cyclicPush;
     function displayResults(site, actionName, errorCode, message) {
+        console.log("displayResults");
         var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         var encodedMsg = "Action: " + actionName + ", Status Code: " + errorCode + ", Message:" + msg;
         site.index = cyclicPush(site.liveViewArr, maxLiveResults, site.index, encodedMsg);
         injectHtmlResult(encodedMsg, site.index);
         for (var i = 0; i < site.chartsIdArr.length; i++) {
-            CreateOrUpdateDataSet(site.chart, actionName, errorCode);
+            CreateOrUpdateDataSet(site, actionName, errorCode);
         }
     }
     Utils.displayResults = displayResults;
@@ -55,6 +57,7 @@ var Utils;
     }
     Utils.highlightFor = highlightFor;
     function CreateOrUpdateDataSet(site, actionName, errorCode) {
+        console.log("site.labels == " + site.labels);
         if (site.labels.indexOf(actionName) === -1) { //It's a new one 
             site.labels.push(actionName);
             var color = getRandomColor();
@@ -97,6 +100,7 @@ var Site = /** @class */ (function () {
         this.createGraph();
     }
     Site.prototype.createGraph = function () {
+        console.log("Creating chart?!");
         this.chart = new chart_js_1.Chart(document.getElementById("chart"), {
             type: 'bar',
             labels: this.labels,
@@ -130,5 +134,5 @@ var Site = /** @class */ (function () {
     };
     return Site;
 }());
-exports.SiteInstance = new Site(); //Singletone
+exports.Site = Site;
 //# sourceMappingURL=site.js.map

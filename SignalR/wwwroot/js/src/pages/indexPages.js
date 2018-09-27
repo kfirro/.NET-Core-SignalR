@@ -1,20 +1,20 @@
 "use strict";
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var site_1 = require("../site");
 var hub_1 = require("../hub");
+var hub_2 = require("../hub");
 var sendButton = document.querySelector("#sendButton");
 var liveViewToggle = document.getElementById("cbLiveView");
+var Hub = new hub_1.HubConnection();
 sendButton.addEventListener("click", function (e) {
     var message = document.getElementById("messageInput").value;
-    if (hub_1.Hub.connection != null) {
-        hub_1.Hub.connection.invoke("SendMessage", "Site", 200, message).catch(function (err) {
-            return console.error(err.toString());
-        });
-    }
+    console.log("Hub.connection: " + Hub.connection);
+    Hub.connection.invoke("SendMessage", "Site", 200, message).catch(function (err) {
+        return console.error(err.toString());
+    });
     e.preventDefault();
 });
 liveViewToggle.addEventListener("change", function (e) {
-    site_1.SiteInstance.isLive = _this.checked;
+    console.log("site.isLive changed from: " + hub_2.default.isLive + " to: " + liveViewToggle.checked);
+    hub_2.default.isLive = liveViewToggle.checked;
 });
 //# sourceMappingURL=indexPages.js.map
