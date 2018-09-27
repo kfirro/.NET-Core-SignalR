@@ -39,7 +39,7 @@ module.exports = {
         ]
     },
     plugins: [
-        //new CleanWebpackPlugin(["wwwroot/*"]),
+        new CleanWebpackPlugin(["wwwroot/js/dist/*"]),
         //new HtmlWebpackPlugin({
         //    template: "./src/index.html"
         //}),
