@@ -19,8 +19,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "webpack --config \"webpack.config.js\" --mode=development --watch",
-    "release": "webpack --config \"webpack.config.js\" --mode=production",
+    "build": "webpack --config \"webpack.config.js\" --mode=development --watch --progress --colors",
+    "release": "webpack --config \"webpack.config.js\" --mode=production --progress --colors",
     "publish": "npm run release && dotnet publish -c Release"
   },
   "keywords": [],

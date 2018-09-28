@@ -1,8 +1,8 @@
-﻿const path = require("path");
+﻿const webpack = require('webpack');
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     context: path.resolve(__dirname, 'wwwroot'),
@@ -11,16 +11,14 @@ module.exports = {
         hub: "./js/src/hub.ts",
         indexPages: "./js/src/pages/indexPages.ts"
     },
-    //devtool: false, //Enable source-map generating
+    devtool: 'eval-source-map', //Enable source-map generating
     target: "web",
     externals: [
-        //nodeExternals(), // in order to ignore all modules in node_modules folder
     ], 
     output: {
         path: path.resolve(__dirname, "./wwwroot/js/dist"),
         //filename: "[name].[chunkhash].js",
         filename: "[name].js",
-        sourceMapFilename: "[name].js.map",
         publicPath: "/"
     },
     resolve: {
@@ -31,6 +29,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 use: "ts-loader",
+                exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
@@ -39,6 +38,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.SourceMapDevToolPlugin({
+            filename: "sourceMap/[file].map"
+        }),
         new CleanWebpackPlugin(["wwwroot/js/dist/*"]),
         //new HtmlWebpackPlugin({
         //    template: "./src/index.html"
