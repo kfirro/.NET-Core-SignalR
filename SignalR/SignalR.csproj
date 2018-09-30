@@ -9,6 +9,7 @@
     <Content Remove="wwwroot\js\src\hub.ts" />
     <Content Remove="wwwroot\js\src\pages\indexPages.ts" />
     <Content Remove="wwwroot\js\src\site.ts" />
+    <Content Remove="wwwroot\js\src\utils.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
     <TypeScriptCompile Include="wwwroot\js\src\hub.ts" />
     <TypeScriptCompile Include="wwwroot\js\src\pages\indexPages.ts" />
     <TypeScriptCompile Include="wwwroot\js\src\site.ts" />
+    <TypeScriptCompile Include="wwwroot\js\src\utils.ts" />
   </ItemGroup>
 
 </Project>

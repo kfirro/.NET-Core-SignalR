@@ -1,9 +1,10 @@
 ﻿"use strict";
 import { HubConnection } from "../hub";
 import site from "../hub";
+import * as $ from "jquery";
 
 const sendButton: HTMLButtonElement = document.querySelector("#sendButton");
-const liveViewToggle: HTMLInputElement = <HTMLInputElement>document.getElementById("cbLiveView");
+const liveViewToggle: JQuery<HTMLElement> = $(".btn-group");
 const Hub: HubConnection = new HubConnection();
 
 sendButton.addEventListener("click", (e: KeyboardEvent) => {
@@ -13,7 +14,15 @@ sendButton.addEventListener("click", (e: KeyboardEvent) => {
     });
     e.preventDefault();
 });
-liveViewToggle.addEventListener("change", (e: KeyboardEvent) => {
-    site.isLive = liveViewToggle.checked;
+liveViewToggle.click({}, () => {
+    event.preventDefault();
+    event.stopPropagation();
+    const cb: HTMLInputElement = <HTMLInputElement>liveViewToggle.children().children()[0];
+    cb.checked = !cb.checked;
+    if (cb.checked)
+        $(".btn.btn-danger").removeClass("btn-danger").addClass("btn-success").addClass("active");
+    else
+        $(".btn.btn-success").removeClass("btn-success").removeClass("active").addClass("btn-danger");
+    site.isLive = cb.checked;    
 });
 

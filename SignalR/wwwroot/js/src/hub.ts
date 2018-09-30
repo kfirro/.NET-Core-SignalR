@@ -1,5 +1,6 @@
 ﻿"use strict";
-import { Site, Utils } from "./site";
+import { Site } from "./site";
+import { Utils } from "./utils";
 import * as signalR from "@aspnet/signalr";
 
 const site: Site = new Site();

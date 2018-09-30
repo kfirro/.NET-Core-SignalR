@@ -8,6 +8,7 @@ module.exports = {
     context: path.resolve(__dirname, 'wwwroot'),
     entry: {
         site: "./js/src/site.ts",
+        utils: "./js/src/utils.ts",
         hub: "./js/src/hub.ts",
         indexPages: "./js/src/pages/indexPages.ts"
     },
@@ -22,14 +23,17 @@ module.exports = {
         publicPath: "/"
     },
     resolve: {
-        extensions: [".js", ".ts"]
+        extensions: [".js", ".ts"],
+        modules: [
+            "node_modules"
+        ]
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
                 use: "ts-loader",
-                exclude: /node_modules/,
+                //exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
