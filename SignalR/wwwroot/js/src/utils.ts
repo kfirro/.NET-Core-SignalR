@@ -11,8 +11,10 @@ export module Utils {
         div.id = "messagesList_" + index;
         if (document.getElementById(div.id) === null)
             document.getElementById("messagesList").appendChild(div);
-        else
+        else {
             document.getElementById(div.id).textContent = encodedMsg;
+            document.getElementById(div.id).setAttribute('data-badger', title);
+        }
         highlightFor(div.id, 'yellow', 2);
     }
     export function cyclicPush(arr: Array<any>, maxLength: number, index: number, obj: any): number {
